@@ -39,8 +39,12 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\IndexController::class => InvokableFactory::class,
+            //Controller\IndexController::class => InvokableFactory::class,
         ],
+        'invokables' => array(
+            'Admin\Controller\Index' => 'Admin\Controller\IndexController',
+             
+        ),
     ],
     'view_manager' => [
         'display_not_found_reason' => true,
@@ -55,7 +59,7 @@ return [
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ],
         'template_path_stack' => [
-            __DIR__ . '/../view',
+            'admin' => __DIR__ . '/../view',
         ],
     ],
 ];
