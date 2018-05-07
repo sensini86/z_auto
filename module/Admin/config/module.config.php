@@ -12,29 +12,26 @@ use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
+
 return [
     'router' => [
         'routes' => [
-            'home' => [
-                'type' => Literal::class,
+            'admin' => [
+                'type' => Segment::class,
                 'options' => [
-                    'route'    => '/',
+                    'route'    => '/admin[/:action]',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action'     => 'index',
                     ],
                 ],
-            ],
-            'application' => [
-                'type'    => Segment::class,
-                'options' => [
-                    'route'    => '/application[/:action]',
-                    'defaults' => [
-                        'controller' => Controller\IndexController::class,
-                        'action'     => 'index',
-                    ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    // You can place additional routes that match under the
+                    // route defined above here.
                 ],
             ],
+
         ],
     ],
     'controllers' => [
@@ -54,12 +51,12 @@ return [
         'exception_template'       => 'error/index',
         'template_map' => [
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
+            'admin/index/index'       => __DIR__ . '/../view/admin/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ],
         'template_path_stack' => [
-            'admin' => __DIR__ . '/../view',
+            __DIR__ . '/../view',
         ],
     ],
 ];
