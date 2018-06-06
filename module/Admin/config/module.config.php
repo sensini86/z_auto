@@ -21,7 +21,7 @@ return [
                 'options' => [
                     'route'    => '/admin[/:action]',
                     'defaults' => [
-                        'controller' => Controller\IndexController::class,
+                        'controller' => Controller\LoginController::class,
                         'action'     => 'index',
                     ],
                 ],
@@ -40,6 +40,7 @@ return [
         ],
         'invokables' => array(
             'Admin\Controller\Index' => 'Admin\Controller\IndexController',
+            'Admin\Controller\Login' => 'Admin\Controller\LoginController',
              
         ),
     ],

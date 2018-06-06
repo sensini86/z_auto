@@ -7,7 +7,7 @@ use Zend\View\Model\ViewModel;
 
 use Admin\Form\LoginForm;
 
-class IndexController extends AbstractActionController
+class LoginController extends AbstractActionController
 {
     public function indexAction()
     {
