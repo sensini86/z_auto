@@ -12,9 +12,19 @@ class IndexController extends AbstractActionController
         $appName        = 'HelloWorld';
         $appDescription = 'A sample application for the Using Zend Framework 3 book';
 
+        // check if user has submitted the form
+        if($this->getRequest()->isPost())
+        {
+            // retrieve form data from POST variables
+            $data = $this->params()->fromPost();
+
+            var_dump($data);
+        }
+
         $viewModel = new ViewModel([
+            'form'              => $form,
             'appName'           => $appName,
-            'appDescription'   => $appDescription
+            'appDescription'    => $appDescription
         ]);
 
 //        $viewModel->setTemplate('admin/index/index');
